@@ -1,0 +1,195 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Hubballi', cursive;
+    min-height: 100vh;
+    background: linear-gradient(to right bottom, #b6f492, #42c9ae);
+    background-attachment: fixed;
+}
+
+.content {
+    float: left;
+    width: 30vw;
+    background: whitesmoke;
+    height: 100vh;
+    position: relative;
+    color: whitesmoke;
+    z-index: -10;
+}
+
+h1 {
+    font-weight: bolder;
+    font-size: 3vw;
+}
+
+p {
+    font-size: x-large;
+}
+
+form {
+    background: rgb(210, 210, 210);
+    margin: auto;
+    width: 80%;
+    padding: 20px 20px;
+    border-radius: 10px;
+}
+
+.content:after {
+    content: '';
+    position: absolute;
+    right: -80px;
+    border-top: 100vh solid whitesmoke;
+    border-right: 80px solid transparent;
+}
+
+.inner {
+    padding: 10px 10px;
+    width: 30vw;
+    text-align: center;
+    top: 8vh;
+    float: left;
+    position: absolute;
+    z-index: 10;
+    height: 92vh;
+}
+
+.slider {
+    transition: all 0.8s ease-out;
+    transform: translateX(-800px);
+    overflow: hidden;
+}
+
+.slideIn {
+    transform: translateX(0px);
+}
+
+input[type=submit] {
+    font-family: 'roboto', Sans-Serif;
+    text-align: center;
+    background: linear-gradient(to right bottom, #42c9ae, #92f4c3);
+    color: rgb(70, 70, 70);
+    padding: 14px 40px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.4s ease;
+    appearance: none;
+}
+
+input[type=text] {
+    font-family: 'roboto', Sans-Serif;
+    border: 1px solid rgb(180, 180, 180);
+    background-color: whitesmoke;
+    display: inline-block;
+    padding: 12px 24px;
+    border-radius: 7px;
+    margin: 3px 0px;
+}
+
+input[type=submit]:hover {
+    background: #7EE8FA;
+}
+
+.svgDiv {
+    float: right;
+    width: 65vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: all 0.3s ease-in;
+}
+
+.svgDivShow {
+    opacity: 1;
+}
+
+.svg {
+    height: 50%;
+    width: 50%;
+}
+
+.bottomText {
+    position: absolute;
+    bottom: 0px;
+    padding: 10px 10px;
+    font-size: 15px;
+}
+
+.PBL {
+    border-radius: 50%;
+    height: 45px;
+    width: 45px;
+}
+
+.toggle {
+    --width: 100px;
+    --height: calc(var(--width) / 3);
+    position: relative;
+    display: inline-block;
+    width: var(--width);
+    height: var(--height);
+    cursor: pointer;
+}
+
+.toggle input {
+    display: none;
+}
+
+.toggle .labels {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    font-size: 12px;
+    font-family: sans-serif;
+    transition: all 0.4s ease-in-out;
+}
+
+.toggle .labels::after {
+    content: attr(data-off);
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    color: rgb(70, 70, 70);
+    background-color: #73ffb9;
+    transition: all 0.4s ease-in-out;
+}
+
+.toggle .labels::before {
+    content: attr(data-on);
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    color: rgb(70, 70, 70);
+    background-color: #73ffb9;
+    text-align: center;
+    opacity: 0;
+    transition: all 0.4s ease-in-out;
+}
+
+.toggle input:checked~.labels::after {
+    transform: rotateY(180deg);
+    opacity: 0;
+}
+
+.toggle input:checked~.labels::before {
+    transform: rotateY(180deg) scale(-1, 1);
+    opacity: 1;
+}

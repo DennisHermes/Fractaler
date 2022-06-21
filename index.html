@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+	
+		<title>Fractiler</title>
+
+		<link rel="icon" type="image/x-icon" href="svg/draw.png">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta charset="UTF-8">
+
+		<link href="https://fonts.googleapis.com/css2?family=Hubballi&family=Oxygen:wght@300&family=Roboto+Mono:wght@200&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="css/index.css" />
+
+	</head>
+
+	<body>
+
+		<div class="slider" id="slider">
+			<div class="content"></div>
+
+			<div class="inner">
+
+				<h1>Maak je eigen fractal</h1>
+
+				<br>
+
+				<form action="viewer.html" method="post" enctype="multipart/form-data">
+					<br>
+					<p style="font-size: 18px;">Begin lengte</p>
+					<br>
+					<input type="text" placeholder="600" required>
+					<br><br><br>
+					<p style="font-size: 18px;">Minimale lengte om te laden</p>
+					<br>
+					<input type="text" placeholder="600" required>
+					<br><br><br>
+					<p style="font-size: 18px;">Minimale lengte om te laden</p>
+					<br>
+					<input type="text" placeholder="600" required>
+					<br><br><br>
+					<label class="toggle">
+						<input type="checkbox">
+						<span class="slider"></span>
+						<span class="labels" data-on="𝛑" data-off="C°"></span>
+					</label>
+					<br><br><br>
+					<input type="submit" value="Genereren">
+				</form>
+			</div>
+
+			<div class="svgDiv" id="svgDiv">
+				<img style="float: right;" class="svg" src="svg/draw.png">
+			</div>
+
+			<div class="bottomText">
+				<p style="font-size: 20px;">&#8239;&#8239;<img class="PBL" src="svg/DHE.png"></img>&#8239;Gemaakt door Dennis Hermes</p>
+				<p style="font-size: 20px;"><img class="PBL" src="svg/PBL.png"></img>&#8239;&#8239;&#8239;In opdracht van P. Blijerveld</p>
+			</div>
+		</div>
+
+		<script>
+            const slider = document.querySelector('#slider');
+            const svg = document.querySelector('#svgDiv');
+
+            setTimeout(() => {
+                slider.classList.add('slideIn');
+            }, 150);
+
+            setTimeout(() => {
+                svg.classList.add('svgDivShow');
+            }, 950);
+        </script>
+
+	</body>
+
+</html>
