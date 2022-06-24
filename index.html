@@ -21,31 +21,71 @@
 
 			<div class="inner">
 
-				<h1>Maak je eigen fractal</h1>
-
 				<br>
+				<h1>Maak je eigen fractal</h1>
+				<br><br>
 
 				<form action="viewer.html" method="post" enctype="multipart/form-data">
-					<br>
-					<p style="font-size: 18px;">Begin lengte</p>
-					<br>
-					<input type="text" placeholder="600" required>
-					<br><br><br>
-					<p style="font-size: 18px;">Minimale lengte om te laden</p>
-					<br>
-					<input type="text" placeholder="600" required>
-					<br><br><br>
-					<p style="font-size: 18px;">Minimale lengte om te laden</p>
-					<br>
-					<input type="text" placeholder="600" required>
-					<br><br><br>
-					<label class="toggle">
-						<input type="checkbox">
-						<span class="slider"></span>
-						<span class="labels" data-on="𝛑" data-off="C°"></span>
-					</label>
-					<br><br><br>
-					<input type="submit" value="Genereren">
+					<div id="form1">
+						<br>
+						<p style="font-size: 18px;">Begin lengte</p>
+						<br>
+						<input type="text" placeholder="600" required>
+						<br><br><br>
+						<p style="font-size: 18px;">Minimale lengte om te laden</p>
+						<br>
+						<input type="text" placeholder="3" required>
+						<br><br><br>
+						<p style="font-size: 18px;">Hoeveelheid lijnen bij elke herhaling</p>
+						<br>
+						<div class="wrapper">
+							<input class="option-1B" type="radio" name="lines" id="lines-1">
+							<input class="option-2B" type="radio" name="lines" id="lines-2" checked>
+							<input class="option-3B" type="radio" name="lines" id="lines-3">
+							<label for="lines-1" class="option option-1">
+								<div class="dot"></div>
+								<span>&#8239;&#8239;1</span>
+							</label>
+							<label for="lines-2" class="option option-2">
+								<div class="dot"></div>
+								<span>&#8239;&#8239;2</span>
+							</label>
+							<label for="lines-3" class="option option-3">
+								<div class="dot"></div>
+								<span>&#8239;&#8239;3</span>
+							</label>
+						</div>
+						<br><br><br>
+						<button class="button">Volgende →</button>
+					</div>
+
+					<div id="form1">
+						<p style="font-size: 18px;">Hoek die de lijn(en) maakt</p>
+						<br>
+						<div class="wrapper">
+							<input class="option-1B" type="radio" name="mode" id="mode-1" checked>
+							<input class="option-2B" type="radio" name="mode" id="mode-2">
+							<label for="mode-1" class="option option-1">
+								<div class="dot"></div>
+								<span>&#8239;&#8239;π</span>
+							</label>
+							<label for="mode-2" class="option option-2">
+								<div class="dot"></div>
+								<span>&#8239;&#8239;C°</span>
+							</label>
+						</div>
+						<br><br><br>
+						<p style="font-size: 18px;">Hoek van lijn 1</p>
+						<input type="text" placeholder="600" required>
+						<br><br><br>
+						<p style="font-size: 18px;">Hoek van lijn 2</p>
+						<input type="text" placeholder="600" required>
+						<br><br><br>
+						<p style="font-size: 18px;">Hoek van lijn 3</p>
+						<input type="text" placeholder="600" required>
+						<br><br><br>
+						<button class="button">Volgende →</button>
+					</div>
 				</form>
 			</div>
 

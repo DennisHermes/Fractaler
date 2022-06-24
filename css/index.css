@@ -50,7 +50,6 @@ form {
     padding: 10px 10px;
     width: 30vw;
     text-align: center;
-    top: 8vh;
     float: left;
     position: absolute;
     z-index: 10;
@@ -67,6 +66,29 @@ form {
     transform: translateX(0px);
 }
 
+input[type=text] {
+    font-family: 'roboto', Sans-Serif;
+    border: 1px solid rgb(180, 180, 180);
+    background-color: whitesmoke;
+    display: inline-block;
+    padding: 12px 24px;
+    border-radius: 7px;
+    margin: 3px 0px;
+}
+
+.button {
+    font-family: 'roboto', Sans-Serif;
+    text-align: center;
+    background: linear-gradient(to right bottom, #42c9ae, #92f4c3);
+    color: rgb(70, 70, 70);
+    padding: 14px 40px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.4s ease;
+    appearance: none;
+}
+
 input[type=submit] {
     font-family: 'roboto', Sans-Serif;
     text-align: center;
@@ -80,15 +102,10 @@ input[type=submit] {
     appearance: none;
 }
 
-input[type=text] {
-    font-family: 'roboto', Sans-Serif;
-    border: 1px solid rgb(180, 180, 180);
-    background-color: whitesmoke;
-    display: inline-block;
-    padding: 12px 24px;
-    border-radius: 7px;
-    margin: 3px 0px;
+.button:hover {
+    background: #7EE8FA;
 }
+
 
 input[type=submit]:hover {
     background: #7EE8FA;
@@ -127,69 +144,75 @@ input[type=submit]:hover {
     width: 45px;
 }
 
-.toggle {
-    --width: 100px;
-    --height: calc(var(--width) / 3);
-    position: relative;
-    display: inline-block;
-    width: var(--width);
-    height: var(--height);
-    cursor: pointer;
+  
+.wrapper{
+    display: inline-flex;
+    height: 60px;
+    width: 80%;
+    align-items: center;
+    justify-content: space-evenly;
+    border-radius: 5px;
 }
 
-.toggle input {
+.option {
+    background: #fff;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 0 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: 2px solid lightgrey;
+    transition: all 0.3s ease;
+
+}
+.option .dot {
+    height: 20px;
+    width: 20px;
+    background: #d9d9d9;
+    border-radius: 50%;
+    position: relative;
+}
+
+.option .dot::before {
+    position: absolute;
+    content: "";
+    top: 4px;
+    left: 4px;
+    width: 12px;
+    height: 12px;
+    background: linear-gradient(to right bottom, #42c9ae, #92f4c3);
+    border-radius: 50%;
+    opacity: 0;
+    transform: scale(1.5);
+    transition: all 0.3s ease;
+}
+  
+input[type="radio"] {
     display: none;
 }
 
-.toggle .labels {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    font-size: 12px;
-    font-family: sans-serif;
-    transition: all 0.4s ease-in-out;
+.option-1B:checked:checked ~ .option-1, .option-2B:checked:checked ~ .option-2,.option-3B:checked:checked ~ .option-3 {
+    border-color: rgb(129, 129, 129);
+    background: linear-gradient(to right bottom, #42c9ae, #92f4c3);
 }
 
-.toggle .labels::after {
-    content: attr(data-off);
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    color: rgb(70, 70, 70);
-    background-color: #73ffb9;
-    transition: all 0.4s ease-in-out;
+.option-1B:checked:checked ~ .option-1 .dot, .option-2B:checked:checked ~ .option-2 .dot, .option-3B:checked:checked ~ .option-3 .dot {
+    background: #fff;
 }
 
-.toggle .labels::before {
-    content: attr(data-on);
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    color: rgb(70, 70, 70);
-    background-color: #73ffb9;
-    text-align: center;
-    opacity: 0;
-    transition: all 0.4s ease-in-out;
-}
-
-.toggle input:checked~.labels::after {
-    transform: rotateY(180deg);
-    opacity: 0;
-}
-
-.toggle input:checked~.labels::before {
-    transform: rotateY(180deg) scale(-1, 1);
+.option-1B:checked:checked ~ .option-1 .dot::before, .option-2B:checked:checked ~ .option-2 .dot::before, .option-3B:checked:checked ~ .option-3 .dot::before {
     opacity: 1;
+    transform: scale(1);
+}
+  
+.option span {
+    font-size: 20px;
+    color: #808080;
+}
+
+.option-1B:checked:checked ~ .option-1 span, .option-2B:checked:checked ~ .option-2 span, .option-3B:checked:checked ~ .option-3 span {
+    color: rgb(70, 70, 70);
 }
