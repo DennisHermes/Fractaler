@@ -2,3 +2,10 @@ body {
     margin: 0px;
     padding: 0px;
 }
+
+body {
+    font-family: 'Hubballi', cursive;
+    min-height: 100vh;
+    background: linear-gradient(to right bottom, #b6f492, #42c9ae);
+    background-attachment: fixed;
+}

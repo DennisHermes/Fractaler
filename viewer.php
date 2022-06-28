@@ -39,7 +39,7 @@
 			const canvas = document.getElementById('canvas');
 			const context = canvas.getContext('2d');
 			canvas.width = window.innerWidth * 1;
-    		canvas.height = window.innerHeight * 1;
+    		canvas.height = 1200;
 
 			const drawLine = function(rootPoint, r, theta) {
 				context.beginPath();
