@@ -40,7 +40,7 @@
 							<span class="tooltiptext">Vul de lengte van de eerste lijn die wordt getekend. Op deze lijn worden de lengtes van alle andere lijnen gebaseerd. Hou lager hoe minder lang het duurt om te genereren.</span>
 						</div>
 						<br>
-						<input type="text" placeholder="600">
+						<input type="text" name="startLine" id="startLineInput" placeholder="600">
 						<br><br><br>
 
 						<p style="font-size: 18px;">Minimale lengte om te laden</p>
@@ -49,7 +49,7 @@
 							<span class="tooltiptext">Minimale lengte op getekend te worden. Dit houd in dat als de volgende lijn kleiner is dan de hier gegeven lengte, de lijn niet getekend zal worden. Hoe hoger dit getal hoe minder lang het duurt om te genereren.</span>
 						</div>
 						<br>
-						<input type="text" placeholder="3">
+						<input type="text" name="minLength" id="minLengthInput" placeholder="3">
 						<br><br><br>
 						<p style="font-size: 18px;">Hoeveelheid lijnen bij elke herhaling</p>
 						<div class="tooltip"><span class="iconify" data-icon="akar-icons:info"></span>
@@ -57,9 +57,9 @@
 						</div>
 						<br><br>
 						<div class="wrapper">
-							<input onclick="lineCount(1)" class="option-1B" type="radio" name="lines" id="lines-1">
-							<input onclick="lineCount(2)" class="option-2B" type="radio" name="lines" id="lines-2" checked>
-							<input onclick="lineCount(3)" class="option-3B" type="radio" name="lines" id="lines-3">
+							<input onclick="lineCount(1)" class="option-1B" type="radio" name="lines" value="1" id="lines-1">
+							<input onclick="lineCount(2)" class="option-2B" type="radio" name="lines" value="2" id="lines-2" checked>
+							<input onclick="lineCount(3)" class="option-3B" type="radio" name="lines" value="3" id="lines-3">
 								<label for="lines-1" class="option option-1">
 									<div class="dot"></div>
 									<span>&#8239;&#8239;1</span>
@@ -74,8 +74,9 @@
 								</label>
 						</div>
 						<br><br><br>
+						<input type="hidden" id="linesInput" name="linesInput" value="2">
 						
-						<button type="button" class="button" onclick="formPrase(2)">Volgende →</button>
+						<button type="button" class="button" onclick="pageConfirm(1)">Volgende →</button>
 					</div>
 
 					<div style="display: none;" id="form2">
@@ -83,8 +84,8 @@
 						<p style="font-size: 18px;">Hoek die de lijn(en) maakt</p>
 						<br>
 						<div class="wrapper">
-							<input onclick="modeChange(1)" class="option-1B" type="radio" name="mode" id="mode-1" checked>
-							<input onclick="modeChange(2)" class="option-2B" type="radio" name="mode" id="mode-2">
+							<input onclick="modeChange(1)" class="option-1B" type="radio" name="mode" value="pi" id="mode-1" checked>
+							<input onclick="modeChange(2)" class="option-2B" type="radio" name="mode" value="degree" id="mode-2">
 							<label for="mode-1" class="option option-1">
 								<div class="dot"></div>
 								<span>&#8239;&#8239;π</span>
@@ -95,6 +96,8 @@
 							</label>
 						</div>
 						<br><br>
+						<input type="hidden" id="modeInput" name="modeInput" value="pi">
+
 						<div class="tooltip"><span class="iconify" data-icon="akar-icons:info"></span>
 							<span class="tooltiptext">Hoek de elke nieuwe lijn maakt ten opzichte van de vorige lijn. Deze optie heeft geen invloed op de snelheid van het genereren.</span>
 						</div>
@@ -102,14 +105,14 @@
 						
 						<p style="font-size: 18px;">Hoek van lijn 1</p>
 						<span input-symbol="π" class="input-symbol" id="inputAngle1">
-							<input type="text" placeholder="0.5" id="inputFieldAngle1">
+							<input type="text" placeholder="0.5" name="rotation1" id="inputFieldAngle1">
 						</span>
 						<br><br><br>
 
 						<div id="angle2">
 							<p style="font-size: 18px;">Hoek van lijn 2</p>
 							<span input-symbol="π" class="input-symbol" id="inputAngle2">
-								<input type="text" placeholder="0.5" id="inputFieldAngle2">
+								<input type="text" placeholder="0.5" name="rotation2" id="inputFieldAngle2">
 							</span>
 							<br><br><br>
 						</div>
@@ -117,13 +120,13 @@
 						<div id="angle3" style="display: none;">
 							<p style="font-size: 18px;">Hoek van lijn 3</p>
 							<span input-symbol="π" class="input-symbol" id="inputAngle3">
-								<input type="text" placeholder="0.5" id="inputFieldAngle3">
+								<input type="text" placeholder="0.5" name="rotation3" id="inputFieldAngle3">
 							</span>
 							<br><br><br>
 						</div>
 
 						<button type="button" class="button" onclick="formPrase(1)">← Vorige</button>
-						<button type="button" class="button" onclick="formPrase(3)">Volgende →</button>
+						<button type="button" class="button" onclick="pageConfirm(2)">Volgende →</button>
 					</div>
 
 					<div style="display: none;" id="form3">
@@ -131,14 +134,14 @@
 						
 						<p style="font-size: 18px;">Lengte van lijn 1 in percentage tenopzichte van vorige lijn</p>
 						<span input-symbol="%" class="input-symbol">
-							<input type="text" placeholder="60">
+							<input type="text" name="ratio1" placeholder="60">
 						</span>
 						<br><br><br>
 
 						<div id="ratio2">
 							<p style="font-size: 18px;">Lengte van lijn 2 in percentage tenopzichte van vorige lijn</p>
 							<span input-symbol="%" class="input-symbol">
-								<input type="text" placeholder="60">
+								<input type="text" name="ratio2" placeholder="60">
 							</span>
 							<br><br><br>
 						</div>
@@ -146,13 +149,13 @@
 						<div id="ratio3" style="display: none;">
 							<p style="font-size: 18px;">Lengte van lijn 3 in percentage tenopzichte van vorige lijn</p>
 							<span input-symbol="%" class="input-symbol">
-								<input type="text" placeholder="60">
+								<input type="text" name="ratio3" placeholder="60">
 							</span>
 							<br><br><br>
 						</div>
 
 						<button type="button" class="button" onclick="formPrase(2)">← Vorige</button>
-						<button class="button" onclick="formPrase(3)">Genereren →</button>
+						<input type="submit" class="button" value="Genereren →">
 					</div>
 				</form>
 			</div>
@@ -179,8 +182,6 @@
                 svg.classList.add('svgDivShow');
             }, 950);
 
-
-
 			function formPrase(page) {
 				document.getElementById("form1").style.display = "none";
 				document.getElementById("form2").style.display = "none";
@@ -194,11 +195,14 @@
 				document.getElementById("angle3").style.display = "none";
 				document.getElementById("ratio2").style.display = "none";
 				document.getElementById("ratio3").style.display = "none";
+				if (count == 1) document.getElementById("linesInput").value = "1";
 				if (count >= 2) {
+					document.getElementById("linesInput").value = "2";
 					document.getElementById("angle2").style.display = "block";
 					document.getElementById("ratio2").style.display = "block";
 				}
 				if (count >= 3) {
+					document.getElementById("linesInput").value = "3";
 					document.getElementById("angle3").style.display = "block";
 					document.getElementById("ratio3").style.display = "block";
 				}
@@ -206,6 +210,7 @@
 
 			function modeChange(mode) {
 				if (mode == 1) {
+					document.getElementById("modeInput").value = "pi";
 					document.getElementById("inputAngle1").setAttribute('input-symbol', 'π');
 					document.getElementById("inputAngle2").setAttribute('input-symbol', 'π');
 					document.getElementById("inputAngle3").setAttribute('input-symbol', 'π');
@@ -213,6 +218,7 @@
 					document.getElementById("inputFieldAngle2").setAttribute('placeholder', '0.5');
 					document.getElementById("inputFieldAngle3").setAttribute('placeholder', '0.5');
 				} else {
+					document.getElementById("modeInput").value = "degree";
 					document.getElementById("inputAngle1").setAttribute('input-symbol', 'C°');
 					document.getElementById("inputAngle2").setAttribute('input-symbol', 'C°');
 					document.getElementById("inputAngle3").setAttribute('input-symbol', 'C°');
@@ -220,6 +226,44 @@
 					document.getElementById("inputFieldAngle2").setAttribute('placeholder', '90');
 					document.getElementById("inputFieldAngle3").setAttribute('placeholder', '90');
 				}
+			}
+
+			function pageConfirm(page) {
+				var valid = true;
+
+				if (page == 1) {
+					var startLine = document.getElementById("startLineInput").value;
+					var minLength = document.getElementById("minLengthInput").value;
+
+					startLine = Number(startLine);
+					minLength = Number(minLength);
+
+					if (!Number.isInteger(startLine) || startLine == 0) {
+						valid = false;
+						document.getElementById("startLineInput").classList.add("wrongInput");
+					} else {
+						document.getElementById("startLineInput").classList.remove("wrongInput");
+					}
+
+					if (!Number.isInteger(minLength) || minLength == 0) {
+						valid = false;
+						document.getElementById("minLengthInput").classList.add("wrongInput");
+					} else {
+						document.getElementById("minLengthInput").classList.remove("wrongInput");
+					}
+				} else if (page == 2) {
+					var startLine = document.getElementById("startLineInput").value;
+					var minLength = document.getElementById("minLengthInput").value;
+
+					
+				} else if (page == 3) {
+					var startLine = document.getElementById("startLineInput").value;
+					var minLength = document.getElementById("minLengthInput").value;
+
+					
+				}
+
+				if (valid) formPrase(page + 1);
 			}
         </script>
 

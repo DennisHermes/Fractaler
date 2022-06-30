@@ -66,7 +66,7 @@ form {
     transform: translateX(0px);
 }
 
-input[type=text] {
+input[type=number], input[type=text] {
     font-family: 'roboto', Sans-Serif;
     border: 1px solid rgb(180, 180, 180);
     background-color: whitesmoke;
@@ -75,6 +75,16 @@ input[type=text] {
     border-radius: 7px;
     margin: 3px 0px;
 }
+
+.wrongInput {
+    border: 1px solid red !important;
+    color: red;
+}
+
+.wrongInput::placeholder {
+    color: red;
+    opacity: 0.5;
+  }
 
 .button {
     font-family: 'roboto', Sans-Serif;

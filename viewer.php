@@ -21,15 +21,16 @@
 		</ul>
 		
 		<script>
-			const modeDegree = <?php echo true; ?>;
-			const beginLength = <?php echo 600; ?>;
-			const minLength = <?php echo 1; ?>;
-			var alpha = <?php echo 90; ?>;
-			var beta = <?php echo -90; ?>;
-			var delta = <?php echo 0; ?>;
-			const ratioA = <?php echo 0.5; ?>;
-			const ratioB = <?php echo 0.5; ?>;
-			const ratioC = <?php echo 0.5; ?>;
+			const modeDegree = <?php if ($_POST["modeInput"] == "pi") echo 0; else echo 1; ?>;
+			const beginLength = <?php if ($_POST["startLine"] != null) echo $_POST["startLine"]; else echo 3; ?>;
+			const minLength = <?php if ($_POST["minLength"] != null) echo $_POST["minLength"]; else echo 3; ?>;
+			const lines = <?php echo $_POST["linesInput"]; ?>;
+			var alpha = <?php if ($_POST["rotation1"] != null) echo $_POST["rotation1"]; else echo 0.5; ?>;
+			var beta = <?php if ($_POST["rotation2"] != null) echo $_POST["rotation2"]; else echo 0.5; ?>;
+			var delta = <?php if ($_POST["rotation3"] != null) echo $_POST["rotation3"]; else echo 0.5; ?>;
+			const ratioA = <?php if ($_POST["ratio1"] != null) echo $_POST["ratio1"]; else echo 60; ?> / 100;
+			const ratioB = <?php if ($_POST["ratio2"] != null) echo $_POST["ratio2"]; else echo 60; ?> / 100;
+			const ratioC = <?php if ($_POST["ratio3"] != null) echo $_POST["ratio3"]; else echo 60; ?> / 100;
 
 			const Point = function(x, y) {
 				this.X = x;
@@ -78,6 +79,12 @@
 				alpha = alpha / 180 * Math.PI;
 				addCalculation("Rotatie gegeven in graden, ombereken naar radialen: (" + beta + " / 180) x 𝜋 = " + beta / 180 + "𝜋");
 				beta = beta / 180 * Math.PI;
+				addCalculation("Rotatie gegeven in graden, ombereken naar radialen: (" + delta + " / 180) x 𝜋 = " + delta / 180 + "𝜋");
+				delta = delta / 180 * Math.PI;
+			} else {
+				alpha = alpha * Math.PI;
+				beta = beta * Math.PI;
+				delta = delta * Math.PI;
 			}
 
 			drawLine(new Point(canvas.width / 2, canvas.height), beginLength, Math.PI * 1.5);
