@@ -41,7 +41,7 @@
 						</div>
 						<br>
 						<input type="text" name="startLine" id="startLineInput" placeholder="600">
-						<br><br><br>
+						<br><br>
 
 						<p style="font-size: 18px;">Minimale lengte om te laden</p>
 						<p style="font-size: 13px;">(Lengte in pixels)</p>
@@ -50,7 +50,7 @@
 						</div>
 						<br>
 						<input type="text" name="minLength" id="minLengthInput" placeholder="3">
-						<br><br><br>
+						<br><br>
 						<p style="font-size: 18px;">Hoeveelheid lijnen bij elke herhaling</p>
 						<div class="tooltip"><span class="iconify" data-icon="akar-icons:info"></span>
 							<span class="tooltiptext">Na elke lijn kan je er voor kiezen om 1 lijn te roteren of om hem the laten splitsen in 2 of 3 lijnen. Hoe minder lijnen hoe minder lang het duurt om te genereren</span>
@@ -59,21 +59,28 @@
 						<div class="wrapper">
 							<input onclick="lineCount(1)" class="option-1B" type="radio" name="lines" value="1" id="lines-1">
 							<input onclick="lineCount(2)" class="option-2B" type="radio" name="lines" value="2" id="lines-2" checked>
-							<input onclick="lineCount(3)" class="option-3B" type="radio" name="lines" value="3" id="lines-3">
-								<label for="lines-1" class="option option-1">
-									<div class="dot"></div>
-									<span>&#8239;&#8239;1</span>
-								</label>
-								<label for="lines-2" class="option option-2">
-									<div class="dot"></div>
-									<span>&#8239;&#8239;2</span>
-								</label>
-								<label for="lines-3" class="option option-3">
-									<div class="dot"></div>
-									<span>&#8239;&#8239;3</span>
-								</label>
+							<label for="lines-1" class="option option-1">
+								<div class="dot"></div>
+								<span>&#8239;&#8239;1</span>
+							</label>
+							<label for="lines-2" class="option option-2">
+								<div class="dot"></div>
+								<span>&#8239;&#8239;2</span>
+							</label>
 						</div>
-						<br><br><br>
+						<div class="wrapper">
+							<input onclick="lineCount(3)" class="option-1B" type="radio" name="lines" value="3" id="lines-3">
+							<input onclick="lineCount(4)" class="option-2B" type="radio" name="lines" value="4" id="lines-4">
+							<label for="lines-3" class="option option-1">
+								<div class="dot"></div>
+								<span>&#8239;&#8239;3</span>
+							</label>
+							<label for="lines-4" class="option option-2">
+								<div class="dot"></div>
+								<span>&#8239;&#8239;4</span>
+							</label>
+						</div>
+						<br><br>
 						<input type="hidden" id="linesInput" name="linesInput" value="2">
 						
 						<button type="button" class="button" onclick="pageConfirm(1)">Volgende →</button>
@@ -107,22 +114,30 @@
 						<span input-symbol="π" class="input-symbol" id="inputAngle1">
 							<input type="text" placeholder="0.5" name="rotation1" id="inputFieldAngle1">
 						</span>
-						<br><br><br>
+						<br><br>
 
 						<div id="angle2">
 							<p style="font-size: 18px;">Hoek van lijn 2</p>
 							<span input-symbol="π" class="input-symbol" id="inputAngle2">
-								<input type="text" placeholder="0.5" name="rotation2" id="inputFieldAngle2">
+								<input type="text" placeholder="-0.5" name="rotation2" id="inputFieldAngle2">
 							</span>
-							<br><br><br>
+							<br><br>
 						</div>
 
 						<div id="angle3" style="display: none;">
 							<p style="font-size: 18px;">Hoek van lijn 3</p>
 							<span input-symbol="π" class="input-symbol" id="inputAngle3">
-								<input type="text" placeholder="0.5" name="rotation3" id="inputFieldAngle3">
+								<input type="text" placeholder="0" name="rotation3" id="inputFieldAngle3">
 							</span>
-							<br><br><br>
+							<br><br>
+						</div>
+
+						<div id="angle4" style="display: none;">
+							<p style="font-size: 18px;">Hoek van lijn 4</p>
+							<span input-symbol="π" class="input-symbol" id="inputAngle4">
+								<input type="text" placeholder="1" name="rotation4" id="inputFieldAngle4">
+							</span>
+							<br><br>
 						</div>
 
 						<button type="button" class="button" onclick="formPrase(1)">← Vorige</button>
@@ -136,14 +151,14 @@
 						<span input-symbol="%" class="input-symbol">
 							<input type="text" name="ratio1" placeholder="60">
 						</span>
-						<br><br><br>
+						<br><br>
 
 						<div id="ratio2">
 							<p style="font-size: 18px;">Lengte van lijn 2 in percentage tenopzichte van vorige lijn</p>
 							<span input-symbol="%" class="input-symbol">
 								<input type="text" name="ratio2" placeholder="60">
 							</span>
-							<br><br><br>
+							<br><br>
 						</div>
 						
 						<div id="ratio3" style="display: none;">
@@ -151,7 +166,15 @@
 							<span input-symbol="%" class="input-symbol">
 								<input type="text" name="ratio3" placeholder="60">
 							</span>
-							<br><br><br>
+							<br><br>
+						</div>
+
+						<div id="ratio4" style="display: none;">
+							<p style="font-size: 18px;">Lengte van lijn 4 in percentage tenopzichte van vorige lijn</p>
+							<span input-symbol="%" class="input-symbol">
+								<input type="text" name="ratio4" placeholder="60">
+							</span>
+							<br><br>
 						</div>
 
 						<button type="button" class="button" onclick="formPrase(2)">← Vorige</button>
@@ -192,9 +215,11 @@
 
 			function lineCount(count) {
 				document.getElementById("angle2").style.display = "none";
-				document.getElementById("angle3").style.display = "none";
-				document.getElementById("ratio2").style.display = "none";
+				document.getElementById("angle2").style.display = "none";
 				document.getElementById("ratio3").style.display = "none";
+				document.getElementById("angle3").style.display = "none";
+				document.getElementById("ratio4").style.display = "none";
+				document.getElementById("angle4").style.display = "none";
 				if (count == 1) document.getElementById("linesInput").value = "1";
 				if (count >= 2) {
 					document.getElementById("linesInput").value = "2";
@@ -205,6 +230,11 @@
 					document.getElementById("linesInput").value = "3";
 					document.getElementById("angle3").style.display = "block";
 					document.getElementById("ratio3").style.display = "block";
+				}
+				if (count >= 4) {
+					document.getElementById("linesInput").value = "4";
+					document.getElementById("angle4").style.display = "block";
+					document.getElementById("ratio4").style.display = "block";
 				}
 			}
 
