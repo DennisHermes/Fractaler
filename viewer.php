@@ -11,7 +11,7 @@
 		
 	</head>
 	
-	<body>
+	<body onload="draw();">
 	
 		<canvas class="canvas" id="canvas"></canvas>
 
@@ -20,7 +20,12 @@
 				<button class="button" onclick="zoomIn()">Inzoomen</button>
 				<button class="button" onclick="zoomOut()">Uitzoomen</button>
 			</div>
+			<div style="float: right;">
+				<button class="button" onclick="window.location.replace('index.html');">Terug</button>
+			</div>
 		</div>
+
+		<div class="loading style-2" id="loading"><div class="loading-wheel"></div></div>
 		
 		<script>
 			const modeDegree = <?php if ($_POST["modeInput"] == "pi") echo 0; else echo 1; ?>;
@@ -84,7 +89,10 @@
 				eta = eta * Math.PI;
 			}
 
-			drawLine(new Point(canvas.width, canvas.height * 2), beginLength, Math.PI * 1.5);
+			function draw() {
+				drawLine(new Point(canvas.width, canvas.height * 2), beginLength, Math.PI * 1.5);
+				document.getElementById("loading").style.display = "none";
+			}
 
 			var zoom = 1;
 			function zoomIn() {
