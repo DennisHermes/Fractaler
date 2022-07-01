@@ -9,6 +9,10 @@
 		<link href="https://fonts.googleapis.com/css2?family=Hubballi&family=Oxygen:wght@300&family=Roboto+Mono:wght@200&display=swap" rel="stylesheet">
 		<link rel="stylesheet" href="css/viewer.css" />
 		
+		<script type="text/javascript">
+            var timerStart = Date.now();
+        </script>
+
 	</head>
 	
 	<body onload="draw();">
@@ -96,14 +100,22 @@
 
 			var zoom = 1;
 			function zoomIn() {
+				document.getElementById("loading").style.display = "block";
 				context.clearRect(0, 0, canvas.height * 10, canvas.width * 10);
 				beginLength = beginLength * 1.2;
 				drawLine(new Point(canvas.width, canvas.height * 2), beginLength, Math.PI * 1.5);
+				setTimeout(() => {
+                	document.getElementById("loading").style.display = "none";
+            	}, 100);
 			}
 			function zoomOut() {
+				document.getElementById("loading").style.display = "block";
 				context.clearRect(0, 0, canvas.height * 10, canvas.width * 10);
 				beginLength = beginLength * 0.8;
 				drawLine(new Point(canvas.width, canvas.height * 2), beginLength, Math.PI * 1.5);
+				setTimeout(() => {
+                	document.getElementById("loading").style.display = "none";
+            	}, 100);
 			}
 		</script>
 		
